@@ -119,18 +119,18 @@ describe Youyouaidi::UUID do
     context 'passing a UUID object' do
       context 'when comparing same instance' do
         let(:action) { first_uuid.send described_method, first_uuid }
-        it { should be_true }
+        it { should be_truthy }
       end
 
       context 'when comparing different instances' do
         let(:action) { first_uuid.send described_method, second_uuid }
         context 'with same UUID strings' do
           let(:second_uuid_string) { first_uuid_string }
-          it { should be_true }
+          it { should be_truthy }
         end
 
         context 'with different UUID strings' do
-            it { should be_false }
+            it { should be_falsey }
         end
       end
     end
@@ -150,12 +150,12 @@ describe Youyouaidi::UUID do
 
       context 'when this is the UUID as string' do
         let(:test_object) { uuid_string }
-        it { should be_false }
+        it { should be_falsey }
       end
 
       context 'when this is a random other object' do
         let(:test_object) { '123' }
-        it { should be_false }
+        it { should be_falsey }
       end
     end
   end
@@ -175,17 +175,17 @@ describe Youyouaidi::UUID do
       context 'when this is the same UUID as string' do
         context 'when string is upcase' do
           let(:test_object) { uuid_string.upcase }
-          it { should be_true }
+          it { should be_truthy }
         end
         context 'when string is downcase' do
           let(:test_object) { uuid_string.downcase }
-          it { should be_true }
+          it { should be_truthy  }
         end
       end
 
       context 'when this is a random other object' do
         let(:test_object) { '123' }
-        it { should be_false }
+        it { should be_falsey }
       end
     end
   end
