@@ -2,6 +2,7 @@
 
 require 'spec_helper'
 
+# rubocop:disable Metrics/BlockLength
 describe Youyouaidi::UUID do
   shared_examples_for 'a call that raises a Youyouaidi::InvalidUUIDError with a meaningful error message' do
     describe 'raises error' do
@@ -257,3 +258,4 @@ describe Youyouaidi::UUID do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
