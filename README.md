@@ -41,10 +41,19 @@ Or install it yourself as:
 ## Usage
 
 `UUID(...)` **was** patched in the kernel. Not anymore. We don't patch the kernel unless we have no other choice.
+This means this gem is not backwards compatible.
+
+```ruby
+require 'youyouaidi'
+
+# Use youyouaidi
+
+```
 
 ### Initializing UUIDs
 
 ```ruby
+
 uuid_string = '550e8400-e29b-41d4-a716-446655440000' # A valid UUID in string format, has exactly 32 hexadecimal characters in 5 groups
 uuid_short  = '2AuYQJcZeiIeCymkJ7tzTW'               # Same UUID in its short format, has exactly 22 characters of [0-9a-zA-Z]
 
