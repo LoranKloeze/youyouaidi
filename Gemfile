@@ -1,9 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'rspec'
-gem 'coveralls', require: false
-
 group :test do
+  gem 'coveralls', require: false
+  gem 'rspec'
   gem 'rake', '~> 10.1'
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
