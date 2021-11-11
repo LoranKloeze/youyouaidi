@@ -57,11 +57,11 @@ require 'youyouaidi'
 uuid_string = '550e8400-e29b-41d4-a716-446655440000' # A valid UUID in string format, has exactly 32 hexadecimal characters in 5 groups
 uuid_short  = '2AuYQJcZeiIeCymkJ7tzTW'               # Same UUID in its short format, has exactly 22 characters of [0-9a-zA-Z]
 
-uuid = Youyouaidi::UUID uuid_string   # creates new Youyouaidi::UUID object
+uuid = Youyouaidi::UUID.parse uuid_string   # creates new Youyouaidi::UUID object
 # => #<Youyouaidi::UUID:0x000001021f2590 @converter=Youyouaidi::Converter, @uuid="550e8400-e29b-41d4-a716-446655440000">
 
 # Alternatively a short UUID can be passed:
-uuid = Youyouaidi::UUID uuid_short    # creates similar Youyouaidi::UUID object
+uuid = Youyouaidi::UUID.parse uuid_short    # creates similar Youyouaidi::UUID object
 # => #<Youyouaidi::UUID:0x00000102201b80 @converter=Youyouaidi::Converter, @uuid="550e8400-e29b-41d4-a716-446655440000">
 
 # To generate a new random UUID simply do not pass a parameter:
