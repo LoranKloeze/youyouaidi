@@ -5,13 +5,13 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'youyouaidi/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'youyouaidi'
+  spec.name          = 'youyouaidi-revised'
   spec.version       = Youyouaidi::VERSION
   spec.authors       = ['Nicolas Fricke', 'Loran Kloeze']
   spec.email         = ['mail@nicolasfricke.de', 'loran@freedomnet.nl']
   spec.summary       = 'UUID class'
   spec.description   = 'Youyouaidi offers a UUID class for parsing, validating and encoding UUIDs'
-  spec.homepage      = 'https://github.com/LoranKloeze/youyouaidi'
+  spec.homepage      = 'https://github.com/LoranKloeze/youyouaidi-revised'
   spec.license       = 'MIT'
   spec.required_ruby_version = '>= 2.7.4'
 
