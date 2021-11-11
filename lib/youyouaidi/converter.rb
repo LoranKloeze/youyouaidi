@@ -48,11 +48,12 @@ module Youyouaidi
 
         total = 0
         s.each_with_index do |char, index|
-          if ord = BASE.index(char)
-            total += ord * (BASE.size**index)
-          else
-            raise Youyouaidi::InvalidUUIDError, "`#{encoded_numeric}' has `#{char}' which is not a valid character"
+          ord = BASE.index(char)
+          unless ord
+            (raise Youyouaidi::InvalidUUIDError, "`#{encoded_numeric}' has `#{char}' which is not a valid character")
           end
+
+          total += ord * (BASE.size**index)
         end
         total
       end
