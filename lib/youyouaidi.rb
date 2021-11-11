@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'youyouaidi/version'
 require 'kernel_patch'
 

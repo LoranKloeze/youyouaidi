@@ -1,2 +1,6 @@
-class Youyouaidi::InvalidUUIDError < TypeError
+# frozen_string_literal: true
+
+module Youyouaidi
+  class InvalidUUIDError < TypeError
+  end
 end
