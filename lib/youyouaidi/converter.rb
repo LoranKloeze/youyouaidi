@@ -44,7 +44,7 @@ module Youyouaidi
       end
 
       def base_decode(encoded_numeric)
-        s = encoded_numeric.to_s.reverse.split('')
+        s = encoded_numeric.to_s.reverse.chars
 
         total = 0
         s.each_with_index do |char, index|

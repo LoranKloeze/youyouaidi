@@ -2,6 +2,7 @@
 
 require 'spec_helper'
 
+# rubocop:disable Metrics/BlockLength
 describe Youyouaidi::Converter do
   shared_examples_for 'a call that raises a Youyouaidi::InvalidUUIDError with a meaningful error message' do
     describe 'raises error' do
@@ -76,7 +77,7 @@ describe Youyouaidi::Converter do
 
         context 'with invalid characters' do
           let(:invalid_char) { '_' }
-          let(:encoded_param) { "#{invalid_char}#{encoded_uuid[1..-1]}" }
+          let(:encoded_param) { "#{invalid_char}#{encoded_uuid[1..]}" }
           let(:error_message_includes) { ["`#{encoded_param}'", "`#{invalid_char}'"] }
           it_behaves_like 'a call that raises a Youyouaidi::InvalidUUIDError with a meaningful error message'
         end
@@ -99,3 +100,4 @@ describe Youyouaidi::Converter do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
