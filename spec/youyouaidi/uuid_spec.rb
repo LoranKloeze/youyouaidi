@@ -44,8 +44,6 @@ describe Youyouaidi::UUID do
     context 'with valid uuid string' do
       subject { action }
 
-      uuid_string   = '550e8400-e29b-41d4-a716-446655440000'
-      encoded_uuid  = '2AuYQJcZeiIeCymkJ7tzTW'
       valid_uuids = %w[550e8400-e29b-41d4-a716-446655440000
                        00000000-bbbb-2222-8888-000000000000]
 
@@ -171,7 +169,9 @@ describe Youyouaidi::UUID do
     subject { action }
 
     context 'passing a non-UUID object' do
+      # rubocop:disable Style/CaseEquality
       let(:action) { uuid === test_object }
+      # rubocop:enable Style/CaseEquality
 
       context 'when this is the same UUID as string' do
         context 'when string is upcase' do
