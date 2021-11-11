@@ -1,25 +1,25 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Youyouaidi::Converter do
   shared_examples_for 'a call that raises a Youyouaidi::InvalidUUIDError with a meaningful error message' do
-  describe 'raises error' do
-    subject { -> { action } }
-    it { should raise_error Youyouaidi::InvalidUUIDError }
-    describe 'error message' do
-      let(:caught_error) do
-        begin
+    describe 'raises error' do
+      subject { -> { action } }
+      it { should raise_error Youyouaidi::InvalidUUIDError }
+      describe 'error message' do
+        let(:caught_error) do
           action
           return nil
-        rescue Youyouaidi::InvalidUUIDError => error
-          return error
+        rescue Youyouaidi::InvalidUUIDError => e
+          return e
         end
+        subject { caught_error }
+        it { should_not be_nil }
+        its(:message) { should include(*error_message_includes) }
       end
-      subject { caught_error }
-      it { should_not be_nil}
-      its(:message) { should include(*error_message_includes) }
     end
   end
-end
 
   let(:uuid) { Youyouaidi::UUID.new uuid_string }
   let(:uuid_string) { '550e8400-e29b-41d4-a716-446655440000' }
@@ -38,7 +38,6 @@ end
   end
 
   describe 'methods' do
-
     describe '.encode' do
       subject { described_class.encode uuid }
 
@@ -83,7 +82,7 @@ end
         end
 
         shared_examples_for 'a call with incorrect param string length' do
-          let(:error_message_includes) { ["`#{encoded_param}'", '22', "#{encoded_param.length}"] }
+          let(:error_message_includes) { ["`#{encoded_param}'", '22', encoded_param.length.to_s] }
           it_behaves_like 'a call that raises a Youyouaidi::InvalidUUIDError with a meaningful error message'
         end
 
@@ -93,7 +92,7 @@ end
         end
 
         context 'with too short encoded param' do
-          let(:encoded_param) { "#{encoded_uuid[0..-3]}" }
+          let(:encoded_param) { encoded_uuid[0..-3].to_s }
           it_behaves_like 'a call with incorrect param string length'
         end
       end

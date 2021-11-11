@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rspec'
 require 'rspec/its'
 require 'rspec/collection_matchers'
@@ -10,7 +12,6 @@ if ENV['CI'] || (defined?(:RUBY_ENGINE) && RUBY_ENGINE != 'rbx')
     add_filter 'spec'
   end
 end
-
 
 require 'bundler'
 Bundler.require

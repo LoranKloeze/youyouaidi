@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Youyouaidi::UUID do
@@ -7,12 +9,10 @@ describe Youyouaidi::UUID do
       it { should raise_error Youyouaidi::InvalidUUIDError }
       describe 'error message' do
         let(:caught_error) do
-          begin
-            action
-            return nil
-          rescue Youyouaidi::InvalidUUIDError => error
-            return error
-          end
+          action
+          return nil
+        rescue Youyouaidi::InvalidUUIDError => e
+          return e
         end
         subject { caught_error }
         it { should_not be_nil }
@@ -36,7 +36,7 @@ describe Youyouaidi::UUID do
 
         it { should be_a String }
         it { should have(36).characters }
-        it { should match /[\da-f]{8}-[\da-f]{4}-4[\da-f]{3}-[89ab][\da-f]{3}-[\da-f]{12}/i }
+        it { should match(/[\da-f]{8}-[\da-f]{4}-4[\da-f]{3}-[89ab][\da-f]{3}-[\da-f]{12}/i) }
       end
     end
 
@@ -45,8 +45,8 @@ describe Youyouaidi::UUID do
 
       uuid_string   = '550e8400-e29b-41d4-a716-446655440000'
       encoded_uuid  = '2AuYQJcZeiIeCymkJ7tzTW'
-      valid_uuids = ['550e8400-e29b-41d4-a716-446655440000',
-                     '00000000-bbbb-2222-8888-000000000000']
+      valid_uuids = %w[550e8400-e29b-41d4-a716-446655440000
+                       00000000-bbbb-2222-8888-000000000000]
 
       valid_uuids.each do |valid_uuid|
         context "for uuid `#{valid_uuid}'" do
@@ -71,7 +71,7 @@ describe Youyouaidi::UUID do
 
     context 'with non-uuid-string input' do
       let(:param) { 1234 }
-      let(:error_message_includes) { "`#{param.to_s}'" }
+      let(:error_message_includes) { "`#{param}'" }
       it_behaves_like 'a call that raises a Youyouaidi::InvalidUUIDError with a meaningful error message'
     end
   end
@@ -88,11 +88,11 @@ describe Youyouaidi::UUID do
     end
 
     context 'with uuid in short format' do
-        let(:param) { '2AuYQJcZeiIeCymkJ7tzTW' }
-        let(:decoded_uuid) { '550e8400-e29b-41d4-a716-446655440000' }
+      let(:param) { '2AuYQJcZeiIeCymkJ7tzTW' }
+      let(:decoded_uuid) { '550e8400-e29b-41d4-a716-446655440000' }
 
-        it { should be_a Youyouaidi::UUID }
-        its(:to_s) { should eq decoded_uuid }
+      it { should be_a Youyouaidi::UUID }
+      its(:to_s) { should eq decoded_uuid }
     end
 
     context 'with invalid uuid string' do
@@ -103,7 +103,7 @@ describe Youyouaidi::UUID do
 
     context 'with non-string input' do
       let(:param) { 1234 }
-      let(:error_message_includes) { "`#{param.to_s}'" }
+      let(:error_message_includes) { "`#{param}'" }
       it_behaves_like 'a call that raises a Youyouaidi::InvalidUUIDError with a meaningful error message'
     end
   end
@@ -130,7 +130,7 @@ describe Youyouaidi::UUID do
         end
 
         context 'with different UUID strings' do
-            it { should be_falsey }
+          it { should be_falsey }
         end
       end
     end
@@ -138,7 +138,7 @@ describe Youyouaidi::UUID do
 
   describe '#== (equal operator)' do
     let(:uuid_string)  { 'aaaaaaaa-eeee-4444-aaaa-444444444444' }
-    let(:uuid)  { Youyouaidi::UUID.new uuid_string }
+    let(:uuid) { Youyouaidi::UUID.new uuid_string }
 
     let(:described_method) { :== }
     it_behaves_like 'equality check for two UUID objects'
@@ -161,8 +161,8 @@ describe Youyouaidi::UUID do
   end
 
   describe '#=== (equal operator)' do
-    let(:uuid_string)  { 'aaaaaaaa-eeee-4444-aaaa-444444444444' }
-    let(:uuid)  { Youyouaidi::UUID.new uuid_string }
+    let(:uuid_string) { 'aaaaaaaa-eeee-4444-aaaa-444444444444' }
+    let(:uuid) { Youyouaidi::UUID.new uuid_string }
 
     let(:described_method) { :=== }
     it_behaves_like 'equality check for two UUID objects'
@@ -179,7 +179,7 @@ describe Youyouaidi::UUID do
         end
         context 'when string is downcase' do
           let(:test_object) { uuid_string.downcase }
-          it { should be_truthy  }
+          it { should be_truthy }
         end
       end
 
@@ -204,8 +204,8 @@ describe Youyouaidi::UUID do
     let(:uuid) { Youyouaidi::UUID.new uuid_string }
     subject { uuid.to_i }
 
-    it { should be_a Bignum }
-    it { should eq 113059749145936325402354257176981405696 }
+    it { should be_a Integer }
+    it { should eq 113_059_749_145_936_325_402_354_257_176_981_405_696 }
   end
 
   shared_examples_for 'method for short format' do
@@ -233,12 +233,12 @@ describe Youyouaidi::UUID do
     subject { Youyouaidi::UUID.valid? param }
 
     context 'with valid uuid' do
-      valid_uuids = ['550e8400-e29b-41d4-a716-446655440000',
-                     '27f8bc29-be8e-4dc7-8b30-0295b2a5e902']
+      valid_uuids = %w[550e8400-e29b-41d4-a716-446655440000
+                       27f8bc29-be8e-4dc7-8b30-0295b2a5e902]
 
       valid_uuids.each do |valid_uuid|
         it "should return true for `#{valid_uuid}`" do
-          expect(Youyouaidi::UUID.valid? valid_uuid).to eq true
+          expect(Youyouaidi::UUID.valid?(valid_uuid)).to eq true
         end
       end
     end
@@ -247,11 +247,11 @@ describe Youyouaidi::UUID do
       uuid_string   = '550e8400-e29b-41d4-a716-446655440000'
       encoded_uuid  = '2AuYQJcZeiIeCymkJ7tzTW'
       invalid_uuids = ['Kekse', "aa#{uuid_string}", "#{uuid_string}bb",
-        "#{encoded_uuid}", '550e8400-e29b-41d4-2716-446655440000']
+                       encoded_uuid.to_s, '550e8400-e29b-41d4-2716-446655440000']
 
       invalid_uuids.each do |invalid_uuid|
         it "should return false for `#{invalid_uuid}`" do
-          expect(Youyouaidi::UUID.valid? invalid_uuid).to eq false
+          expect(Youyouaidi::UUID.valid?(invalid_uuid)).to eq false
         end
       end
     end

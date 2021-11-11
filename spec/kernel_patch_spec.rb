@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Kernel do
@@ -7,7 +9,6 @@ describe Kernel do
     let(:action) { UUID param }
 
     subject { action }
-
 
     shared_examples_for 'a valid UUID object' do
       it { should be_a Youyouaidi::UUID }
