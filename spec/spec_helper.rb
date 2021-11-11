@@ -1,4 +1,5 @@
 require 'rspec'
+require 'rspec/its'
 
 # Code coverage statistics at coveralls.io: https://coveralls.io/r/nicolas-fricke/youyouaidi
 # Do not generate coverage when using Rubinius, see: https://github.com/lemurheavy/coveralls-public/issues/144
