@@ -6,11 +6,11 @@ require 'youyouaidi/version'
 Gem::Specification.new do |spec|
   spec.name          = 'youyouaidi'
   spec.version       = Youyouaidi::VERSION
-  spec.authors       = ['Nicolas Fricke']
-  spec.email         = ['mail@nicolasfricke.de']
+  spec.authors       = ['Nicolas Fricke', 'Loran Kloeze']
+  spec.email         = ['mail@nicolasfricke.de', 'loran@freedomnet.nl']
   spec.summary       = %q{UUID class}
   spec.description   = %q{Youyouaidi offers a UUID class for parsing, validating and encoding UUIDs}
-  spec.homepage      = 'https://github.com/nicolas-fricke/youyouaidi'
+  spec.homepage      = 'https://github.com/LoranKloeze/youyouaidi'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($/)
