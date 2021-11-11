@@ -68,7 +68,7 @@ module Youyouaidi
       end
 
       def valid?(uuid_canidate)
-        (uuid_canidate.to_s =~ /^[\da-f]{8}(-[\da-f]{4}){2}-[89ab][\da-f]{3}-[\da-f]{12}$/i) == 0
+        !(uuid_canidate.to_s =~ /^[\da-f]{8}(-[\da-f]{4}){2}-[89ab][\da-f]{3}-[\da-f]{12}$/i).nil?
       end
     end
   end
