@@ -3,6 +3,7 @@
 require 'rspec'
 require 'rspec/its'
 require 'rspec/collection_matchers'
+require 'pry'
 
 # Code coverage statistics at coveralls.io: https://coveralls.io/r/nicolas-fricke/youyouaidi
 # Do not generate coverage when using Rubinius, see: https://github.com/lemurheavy/coveralls-public/issues/144

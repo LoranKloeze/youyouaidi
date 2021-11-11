@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 group :test do
   gem 'coveralls', require: false
+  gem 'pry'
   gem 'rake', '~> 10.1'
   gem 'rspec'
   gem 'rspec-collection_matchers'
