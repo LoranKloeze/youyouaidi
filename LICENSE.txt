@@ -1,4 +1,4 @@
-Copyright (c) 2014 Nicolas Fricke
+Copyright (c) 2014 Nicolas Fricke, Loran Kloeze
 
 MIT License
 
