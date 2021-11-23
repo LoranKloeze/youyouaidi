@@ -118,3 +118,8 @@ uuid === uuid_string # Comparing a UUID object and its string representation wit
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+
+## Build gem
+1. gem build youyouaidi-revised.gemspec
+2. gem install ./youyouaidi-revised-x.x.gem
