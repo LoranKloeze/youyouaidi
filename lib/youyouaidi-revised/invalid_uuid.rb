@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Youyouaidi
+module YouyouaidiRevised
   class InvalidUUIDError < TypeError
   end
 end

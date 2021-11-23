@@ -2,7 +2,7 @@
 
 require 'securerandom'
 
-module Youyouaidi
+module YouyouaidiRevised
   # Main class
   class UUID
     attr_reader :uuid

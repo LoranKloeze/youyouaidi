@@ -2,7 +2,7 @@
 
 # Based on Base62 module by sinefunc
 # => https://github.com/sinefunc/base62
-module Youyouaidi
+module YouyouaidiRevised
   class Converter
     class << self
       def encode(uuid)
