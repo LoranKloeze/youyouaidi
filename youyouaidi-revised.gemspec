@@ -5,7 +5,7 @@ require 'youyouaidi-revised/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'youyouaidi-revised'
-  spec.version       = YouyouaidiRevised::VERSION
+  spec.version       = Youyouaidi::VERSION
   spec.authors       = ['Nicolas Fricke', 'Loran Kloeze']
   spec.email         = ['mail@nicolasfricke.de', 'loran@freedomnet.nl']
   spec.summary       = 'UUID class'

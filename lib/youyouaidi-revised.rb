@@ -5,6 +5,6 @@ require 'youyouaidi-revised/uuid'
 require 'youyouaidi-revised/invalid_uuid'
 require 'youyouaidi-revised/converter'
 
-module YouyouaidiRevised
+module Youyouaidi
   # Your code goes here...
 end
